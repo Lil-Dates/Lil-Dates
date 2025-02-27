@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Random Date Ideas&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#date-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f9f9f9;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>img {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Random Date Idea&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="date-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 id="title"&gt;Loading...&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img id="image" src="" alt="Date Image"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="location"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="description"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Cost:&lt;/strong&gt; &lt;span id="cost"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Distance:&lt;/strong&gt; &lt;span id="distance"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Tube Lines:&lt;/strong&gt; &lt;span id="tube"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a id="link" href="#" target="_blank"&gt;Book This Date&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="fetchRandomDate()"&gt;Shuffle&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const airtableBaseId = "apppPckpi2fJ5tDJm";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const airtableTableName = "Dates In April";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const airtablePAT = "patxF3WujDh8kPYca.c950f54f47f9930833e08fa75d1f5d0ed1406390b24ecb75ca22f5495650f151";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function fetchRandomDate() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const response = await fetch(url, {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>headers: { Authorization: `Bearer ${airtablePAT}` }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = await response.json();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const records = data.records;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (records.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const randomRecord = records[Math.floor(Math.random() * records.length)].fields;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("title").innerText = randomRecord["Date Title"] || "Unknown";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("image").src = randomRecord["Image of Date"] ? randomRecord["Image of Date"][0].url : "";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("location").innerText = `📍 ${randomRecord["Date Location"] || "Unknown"}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("description").innerText = randomRecord["Date Description"] || "";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("cost").innerText = randomRecord["Cost"] || "Unknown";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("distance").innerText = randomRecord["Distance"] || "Unknown";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("tube").innerText = [randomRecord["Tube A"], randomRecord["Tube B"], randomRecord["Tube C"]].filter(Boolean).join(", ") || "N/A";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById("link").href = randomRecord["Link to Book Date"] || "#";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>fetchRandomDate();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
